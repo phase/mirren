@@ -1,0 +1,38 @@
+buildscript {
+    ext.kotlin_version = "1.1.1"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: "kotlin"
+
+plugins {
+    id "org.spongepowered.plugin" version "0.8.1"
+}
+
+group = pluginGroup
+version = pluginVersion
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.spongepowered:spongeapi:5.1.0"
+    compile 'org.spongepowered:mixin:0.6.6-SNAPSHOT'
+}
+
+compileKotlin {
+    kotlinOptions {
+        noStdlib = false
+    }
+}
+
+sponge.plugin.id = pluginId
